@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.21.5",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.1",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",

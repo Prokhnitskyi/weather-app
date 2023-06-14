@@ -28,6 +28,7 @@ h1 {
 }
 
 .app {
+  position: relative;
   color: #fff;
   max-width: 480px;
   margin-inline: auto;
@@ -73,9 +74,21 @@ h1 {
 .weather-display {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+
+    &.hidden {
+      display: none;
+    }
+  }
 
   &__address {
     font-size: 1.2rem;
@@ -96,7 +109,7 @@ h1 {
     & img {
       flex: 0 0 2rem;
       width: 2rem;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1;
       object-fit: contain;
     }
   }
@@ -107,4 +120,32 @@ h1 {
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+}
+
+.loader {
+  width: 4rem; /* control the size */
+  aspect-ratio: 1;
+  display: grid;
+  -webkit-mask: conic-gradient(from 22deg, #0003,#000);
+  mask: conic-gradient(from 22deg, #0003,#000);
+  animation: load 1s steps(8) infinite;
+}
+.loader,
+.loader:before {
+  --_g: linear-gradient(#afafff 0 0) 50%; /* update the color here */
+  background:
+          var(--_g)/34% 8%  space no-repeat,
+          var(--_g)/8%  34% no-repeat space;
+}
+.loader:before {
+  content: "";
+  transform: rotate(45deg);
+}
+@keyframes load {
+  from {transform: rotate(0turn)}
+  to   {transform: rotate(1turn)}
+}
+
+.loader.hidden {
+  display: none;
 }

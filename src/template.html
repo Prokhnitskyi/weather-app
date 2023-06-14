@@ -17,13 +17,16 @@
         </form>
     </div>
     <div class="weather-display">
+        <div class="loader"></div>
+        <div class="weather-display__container hidden">
         <address class="weather-display__address">Country, City</address>
-        <div class="weather-display__temperature">
-            <span id="temp">34</span>° <span id="temp-type">C</span>
-        </div>
-        <div class="weather-display__condition">
-            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly cloudy" id="condition-icon">
-            <span id="condition-text">Partly cloudy</span>
+            <div class="weather-display__temperature">
+                <span id="temp">34</span>° <span id="temp-type">C</span>
+            </div>
+            <div class="weather-display__condition">
+                <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly cloudy" id="condition-icon">
+                <span id="condition-text">Partly cloudy</span>
+            </div>
         </div>
     </div>
     <div class="measurements">

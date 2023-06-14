@@ -11,9 +11,17 @@ function weatherApp () {
   const measurementsSwitches = document.querySelectorAll(
     '[name="temperature-type"]');
   const display = document.querySelector('.weather-display__container');
+  const searchForm = document.querySelector('#search-form');
+  const searchInput = document.querySelector('#search-input');
 
   const init = () => {
-    const weather = getWeather('auto:ip');
+    showWeatherInfo('auto:ip');
+    searchForm.addEventListener('submit', searchFormHandler);
+
+  }
+
+  const showWeatherInfo = (query) => {
+    const weather = getWeather(query);
     weather.then(data => {
       populate(data);
       loader.classList.add('hidden');
@@ -31,6 +39,14 @@ function weatherApp () {
     temperatureTypeField.textContent = selectedMeasurement[0].toUpperCase();
     conditionIcon.src = data.condition.icon;
     conditionText.textContent = data.condition.text;
+  }
+
+  function searchFormHandler (event) {
+    event.preventDefault();
+    if (!searchInput.value) return;
+    loader.classList.remove('hidden');
+    display.classList.add('hidden');
+    showWeatherInfo(searchInput.value);
   }
 
   return {

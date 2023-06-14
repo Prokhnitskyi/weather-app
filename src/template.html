@@ -8,6 +8,35 @@
     <title>Weather App</title>
 </head>
 <body>
-Lorem ipsum dolor sit amet.
+<h1>Weather App</h1>
+<main class="app">
+    <div class="search">
+        <form action="#" method="get" class="search__form" id="search-form">
+            <input type="search" class="search__input" name="search-input" id="search-input" placeholder="Your city">
+            <button type="submit" class="search__submit">Search</button>
+        </form>
+    </div>
+    <div class="weather-display">
+        <address class="weather-display__address">Country, City</address>
+        <div class="weather-display__temperature">
+            <span id="temp">34</span>° <span id="temp-type">C</span>
+        </div>
+        <div class="weather-display__condition">
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly cloudy" id="condition-icon">
+            <span id="condition-text">Partly cloudy</span>
+        </div>
+    </div>
+    <div class="measurements">
+        <div>
+            <input type="radio" name="temperature-type" id="temperature-type-celsius" value="celsius" checked>
+            <label for="temperature-type-celsius">Celsius</label>
+        </div>
+        <div>
+            <input type="radio" name="temperature-type" id="temperature-type-fahrenheit" value="fahrenheit">
+            <label for="temperature-type-fahrenheit">Fahrenheit</label>
+        </div>
+    </div>
+</main>
+
 </body>
 </html>

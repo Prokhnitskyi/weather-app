@@ -17,6 +17,9 @@ function weatherApp () {
   const init = () => {
     showWeatherInfo('auto:ip');
     searchForm.addEventListener('submit', searchFormHandler);
+    measurementsSwitches.forEach(radio => {
+      radio.addEventListener('change', switchMeasurement);
+    });
 
   }
 
@@ -41,12 +44,18 @@ function weatherApp () {
     conditionText.textContent = data.condition.text;
   }
 
-  function searchFormHandler (event) {
+  const searchFormHandler =  (event) => {
     event.preventDefault();
     if (!searchInput.value) return;
     loader.classList.remove('hidden');
     display.classList.add('hidden');
     showWeatherInfo(searchInput.value);
+  }
+
+  const switchMeasurement = () => {
+    const selectedMeasurement = Array.from(measurementsSwitches).find(radio => radio.checked).value;
+    temperatureValueField.textContent = temperatureValueField.dataset[selectedMeasurement];
+    temperatureTypeField.textContent = selectedMeasurement[0].toUpperCase();
   }
 
   return {

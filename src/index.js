@@ -13,6 +13,8 @@ function weatherApp () {
   const display = document.querySelector('.weather-display__container');
   const searchForm = document.querySelector('#search-form');
   const searchInput = document.querySelector('#search-input');
+  const errorField = document.querySelector('.error');
+  const errorText = document.querySelector('.error_text');
 
   const init = () => {
     showWeatherInfo('auto:ip');
@@ -27,10 +29,15 @@ function weatherApp () {
     const weather = getWeather(query);
     weather.then(data => {
       populate(data);
+      errorField.style.display = 'none';
       loader.classList.add('hidden');
       display.classList.remove('hidden');
     }).
-      catch(err => alert('Something gone wrong'));
+      catch(err => {
+        loader.classList.add('hidden');
+        errorText.textContent = err.message;
+        errorField.style.display = 'block';
+      });
   }
 
   const populate = (data) => {

@@ -149,3 +149,10 @@ h1 {
 .loader.hidden {
   display: none;
 }
+
+.error {
+  display: none;
+  color: red;
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+}

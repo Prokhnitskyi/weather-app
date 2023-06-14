@@ -24,5 +24,22 @@ async function fetchWeatherCached (query) {
   }
 }
 
+async function getWeather (query) {
+  const data = await fetchWeatherCached(query);
 
-export {fetchWeatherCached};
+  return {
+    country: data.location.country,
+    place: data.location.name,
+    temperature: {
+      celsius: data.current.temp_c,
+      fahrenheit: data.current.temp_f
+    },
+    condition: {
+      text: data.current.condition.text,
+      icon: `https:${data.current.condition.icon}`
+    }
+  }
+}
+
+
+export {getWeather};
